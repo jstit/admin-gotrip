@@ -20,12 +20,15 @@ const useTable = (value) => {
     useEffect(() => {
         const data = onSearch(value, searchValueAll, searchFilter);
         setTotalpage(Math.ceil(data.length / limitPage));
+        setCurrentPage(1);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchValueAll]);
 
     useEffect(() => {
         const data = onSearch(value, searchValueAll, searchFilter);
-        setTotalpage(Math.ceil(data.length / limitPage));
+        const length = Math.ceil(data.length / limitPage);
+        setTotalpage(length);
+        setCurrentPage(1);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchValue]);
 
@@ -81,6 +84,7 @@ const useTable = (value) => {
 
     return {
         createData,
+        currentPage,
         totalPage,
         onHandleCurrenPage,
         onHandleLimitPage,

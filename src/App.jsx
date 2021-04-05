@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Pagination from "@material-ui/lab/Pagination";
 
@@ -7,7 +7,6 @@ import Header from "@components/common/Header";
 import Sidebar from "@components/common/Sidebar";
 
 import { useUser } from "@shared/modules/user/hook";
-import { useEffect } from "react";
 
 import useTable from "@shared/hook/useTable";
 
@@ -18,6 +17,7 @@ const App = () => {
 
     const {
         createData,
+        currentPage,
         totalPage,
         onHandleCurrenPage,
         onHandleSearchValue,
@@ -90,6 +90,7 @@ const App = () => {
                                 <br />
                                 <Pagination
                                     count={totalPage}
+                                    page={currentPage}
                                     onChange={(e, index) => {
                                         onHandleCurrenPage(index);
                                     }}
